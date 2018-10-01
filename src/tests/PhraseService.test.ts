@@ -21,5 +21,6 @@ describe('PhraseService', function(){
 
         expect(actualPhrases).toEqual(RandomPhrases);
         expect(actualPhrases.length).toEqual(phraseCount);
+        expect(actualPhrases).toMatchSnapshot();
     });
 });

@@ -5,7 +5,7 @@ import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
-  <App name='Nacho' enthusiasmLevel={7}/>,
+  <App />,
   document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();

@@ -1,28 +1,16 @@
 import * as React from 'react';
+import {phraseService} from './infrastructure/Factory'
 
-export interface Props {
-    name: string;
-    enthusiasmLevel?: number;
-}
 
-function Hello({ name, enthusiasmLevel = 1 }: Props) {
-    if (enthusiasmLevel <= 0) {
-        throw new Error('You could be a little more enthusiastic. :D');
+class Hello extends React.Component<any, any> {
+    async componentDidMount(){
+        await phraseService.getRandomPhrases(5);
     }
 
-    return (
-        <div className="hello">
-            <div className="greeting">
-                Hello {name + getExclamationMarks(enthusiasmLevel)}
-            </div>
-        </div>
-    );
+    render (){
+       return null;
+    }
+    
 }
 
 export default Hello;
-
-// helpers
-
-function getExclamationMarks(numChars: number) {
-    return Array(numChars + 1).join('!');
-}
