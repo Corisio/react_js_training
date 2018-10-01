@@ -1,6 +1,9 @@
 import axios, {AxiosInstance, AxiosResponse} from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
+import PhraseService from './PhraseService';
+import { Phrase } from '../domain/Phrase';
+
 const API_URL = 'http://api.icndb.com/jokes/random/';
 const PHRASES = [
     { id: '39', text: 'Chuck Norris can win at solitaire with only 18 cards.'},
@@ -12,40 +15,6 @@ const PHRASES = [
 
 const httpClient = axios.create();
 const axiosMocked = new MockAdapter(httpClient);
-
-function parse(phraseResponse: PhraseResponse) : Array<Phrase>{
-    const result: Array<Phrase> = phraseResponse.value.map(
-        phraseObject => ({id: phraseObject.id.toString(), text: phraseObject.joke}));
-    
-    return result;
-}
-
-class PhraseService {
-    private httpClient:AxiosInstance;
-
-    constructor(httpClient:AxiosInstance){
-        this.httpClient = httpClient;
-    }
-
-    async getRandomPhrases(number: number): Promise<Array<Phrase>>{
-        const response: AxiosResponse<PhraseResponse> = await this.httpClient.get(API_URL + number.toString());
-        
-        return parse(response.data);
-    }
-}
-
-interface Phrase{
-    text: string,
-    id: string
-}
-
-interface PhraseResponse{
-    type: string,
-    value: Array<{
-        id: number,
-        joke: string
-    }>
-}
 
 describe('PhraseService', function(){
     it('get phrases', async function(){
