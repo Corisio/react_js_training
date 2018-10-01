@@ -1,4 +1,4 @@
-import axios, {AxiosInstance, AxiosResponse} from 'axios';
+import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
 import PhraseService from '../service/PhraseService';

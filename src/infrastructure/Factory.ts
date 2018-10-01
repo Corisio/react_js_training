@@ -1,4 +1,4 @@
-import axios, {AxiosInstance, AxiosResponse} from 'axios';
+import axios, {AxiosInstance} from 'axios';
 import PhraseService from '../service/PhraseService';
 
 const httpClient  : AxiosInstance = axios.create();

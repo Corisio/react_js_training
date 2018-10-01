@@ -1,4 +1,4 @@
-import axios, {AxiosInstance, AxiosResponse} from 'axios';
+import {AxiosInstance, AxiosResponse} from 'axios';
 import { Phrase } from '../domain/Phrase';
 import { PhraseResponse } from '../domain/PhraseResponse';
 
