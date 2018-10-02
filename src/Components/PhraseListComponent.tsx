@@ -9,7 +9,7 @@ interface Props{
 class PhraseListComponent extends React.Component<Props, {}> {
     render() {
         const phrases = this.props.phrases.map(phrase => <PhraseComponent key={phrase.id} text={phrase.text}/>);
-        return <div className="phraseListContainer">
+        return <div className="phraseListContainer list-group list-group-flush">
             <ul>
                 {phrases}
             </ul>

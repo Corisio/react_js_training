@@ -17,8 +17,14 @@ class App extends React.Component<any, State> {
     }
     
     render() {
-        return (<div className="phrase-container">
-            <div className="phrase-title"><h1>Chuck Norris's random phrases</h1></div>
+        return (
+        <div className="phrase-container">
+            <div className="jumbotron jumbotron-fluid">
+                <div className="container text-center">
+                    <h1 className="display-4">Chuck Norris's random phrases</h1>
+                    <p className="lead">This React.js app shows five random Chuck Norris phrases.</p>
+                </div>
+            </div> 
             <ul className="phrase-list">
                 <PhraseListComponent phrases={this.state.phrases} />
             </ul>
