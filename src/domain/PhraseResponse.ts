@@ -1,7 +1,7 @@
 export interface PhraseResponse {
     type: string;
-    value: Array<{
+    value: {
         id: number;
         joke: string;
-    }>;
+    };
 }

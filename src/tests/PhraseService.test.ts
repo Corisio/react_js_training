@@ -4,7 +4,8 @@ import MockAdapter from 'axios-mock-adapter';
 import PhraseService from '../service/PhraseService';
 import { Phrase } from '../domain/Phrase';
 import { RandomPhrases } from './fixtures/services/randomPhrases';
-import { API_URL } from '../infrastructure/configuration';
+import { MostImportantPhrase } from './fixtures/services/mostImportantPhrase';
+import { API_URL, API_MOST_IMPORTANT_URL } from '../infrastructure/configuration';
 
 const httpClient = axios.create();
 const axiosMocked = new MockAdapter(httpClient);
@@ -22,5 +23,16 @@ describe('PhraseService', function(){
         expect(actualPhrases).toEqual(RandomPhrases);
         expect(actualPhrases.length).toEqual(phraseCount);
         //expect(actualPhrases).toMatchSnapshot();
+    });
+
+    it('get most important phrase', async function(){
+        const joke = {"id": MostImportantPhrase.id, "joke": MostImportantPhrase.text};
+        axiosMocked.onGet(API_MOST_IMPORTANT_URL).reply
+            (200, { "type": "success", "value": joke});
+        const phraseService: PhraseService = new PhraseService(httpClient);
+
+        const actualPhrase: Phrase = await phraseService.getMostImportantPhrase();
+
+        expect(actualPhrase).toEqual(MostImportantPhrase);
     });
 });
