@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {phraseService} from './infrastructure/Factory'
 import {Phrase} from './domain/Phrase'
-import PhraseComponent from './Components/PhraseComponent'
+import PhraseListComponent from './Components/PhraseListComponent';
 
 interface State {
     phrases: Array<Phrase>;
@@ -17,12 +17,10 @@ class App extends React.Component<any, State> {
     }
     
     render() {
-        const phrases = this.state.phrases.map(phrase => <PhraseComponent key={phrase.id} text={phrase.text}/>);
-        
         return (<div className="phrase-container">
             <div className="phrase-title"><h1>Chuck Norris's random phrases</h1></div>
             <ul className="phrase-list">
-                {phrases}
+                <PhraseListComponent phrases={this.state.phrases} />
             </ul>
         </div>);
     }
