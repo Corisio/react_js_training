@@ -7,7 +7,7 @@ interface Props{
 
 class PhraseComponent extends React.Component<Props, {}> {
     render() {
-        return <li className="phrase" id={this.props.key}> {this.props.text}</li>
+        return <li className="phrase">{this.props.text}</li>
     }
     
 }
